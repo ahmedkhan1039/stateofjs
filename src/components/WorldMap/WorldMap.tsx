@@ -3,7 +3,7 @@ import * as React from 'react'
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
 
 // src
-import './styles.css'
+import './WorldMap.css'
 
 type Longitude = number
 type Latitude = number
