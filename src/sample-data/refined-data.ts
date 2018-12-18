@@ -1,4 +1,4 @@
-type CategoryInformation = {
+interface CategoryInformation {
     category: string,
     range: {
         upperLimit: string,
@@ -9,7 +9,7 @@ type CategoryInformation = {
     attributes: Attributes
 }
 
-type Attributes = {
+interface Attributes {
     medianSalary: number,
     avgExperience: number,
     avgSkillsExplored: number,
@@ -17,15 +17,16 @@ type Attributes = {
     sadPeople: number
 }
 
-type GenericSkillAttributes = {
+interface GenericSkillAttributes {
     skill: string,
     weightage: number,
     attributes: Attributes
 }
 
-type InterestedSkillAttributes = GenericSkillAttributes;
+interface InterestedSkillAttributes extends GenericSkillAttributes {
+}
 
-type WorkingSkillAttributes = GenericSkillAttributes & {
+interface WorkingSkillAttributes extends GenericSkillAttributes {
     interests: Array<InterestedSkillAttributes>
 }
 
