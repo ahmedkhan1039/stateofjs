@@ -1,20 +1,19 @@
 type CategoryInformation = {
     category: string,
     range: {
-        upperLimit: string,
-        lowerLimit: string
-    },
-    noOfPersons: number;
+        upperLimit: number, //Edit by AW - since everything is dollars using suffixes and string will make computations more complex
+        lowerLimit: number, // Same as above
+     },
+    noOfPersons: number,
     worksOn: Array<WorkingSkillAttributes>,
-    attributes: Attributes
+    attributes: Attributes,
 }
 
 type Attributes = {
     medianSalary: number,
     avgExperience: number,
     avgSkillsExplored: number,
-    happyPeople: number,
-    sadPeople: number
+    happyPeople: number, //out of 100
 }
 
 type GenericSkillAttributes = {
@@ -32,8 +31,8 @@ type WorkingSkillAttributes = GenericSkillAttributes & {
 const sampleData: CategoryInformation = {
     category: 'HI',
     range: {
-        upperLimit: '20K',
-        lowerLimit: '15K'
+        upperLimit: 20000,
+        lowerLimit: 15000
     },
     noOfPersons: 150,
     worksOn: [
@@ -48,8 +47,7 @@ const sampleData: CategoryInformation = {
                         medianSalary: 10000,
                         avgExperience: 15,
                         avgSkillsExplored: 13,
-                        happyPeople: 80, //Percentage
-                        sadPeople: 20 //Percentage
+                        happyPeople: 80, //Percentage rest of it are sadPeople
                     }
                 },
                 {
@@ -60,7 +58,6 @@ const sampleData: CategoryInformation = {
                         avgExperience: 15,
                         avgSkillsExplored: 13,
                         happyPeople: 80, //Percentage
-                        sadPeople: 20 //Percentage
                     }
                 },
                 {
@@ -71,7 +68,6 @@ const sampleData: CategoryInformation = {
                         avgExperience: 15,
                         avgSkillsExplored: 13,
                         happyPeople: 80, //Percentage
-                        sadPeople: 20 //Percentage
                     }
                 }
             ],
@@ -80,7 +76,6 @@ const sampleData: CategoryInformation = {
                 avgExperience: 15,
                 avgSkillsExplored: 13,
                 happyPeople: 80, //Percentage
-                sadPeople: 20 //Percentage
             }
         },
         {
@@ -95,7 +90,6 @@ const sampleData: CategoryInformation = {
                         avgExperience: 15,
                         avgSkillsExplored: 13,
                         happyPeople: 80, //Percentage
-                        sadPeople: 20 //Percentage
                     }
                 },
                 {
@@ -106,7 +100,6 @@ const sampleData: CategoryInformation = {
                         avgExperience: 15,
                         avgSkillsExplored: 13,
                         happyPeople: 80, //Percentage
-                        sadPeople: 20 //Percentage
                     }
                 },
                 {
@@ -117,7 +110,6 @@ const sampleData: CategoryInformation = {
                         avgExperience: 15,
                         avgSkillsExplored: 13,
                         happyPeople: 80, //Percentage
-                        sadPeople: 20 //Percentage
                     }
                 }
             ],
@@ -126,7 +118,6 @@ const sampleData: CategoryInformation = {
                 avgExperience: 15,
                 avgSkillsExplored: 13,
                 happyPeople: 80, //Percentage
-                sadPeople: 20 //Percentage
             }
         },
         {
@@ -141,7 +132,6 @@ const sampleData: CategoryInformation = {
                         avgExperience: 15,
                         avgSkillsExplored: 13,
                         happyPeople: 80, //Percentage
-                        sadPeople: 20 //Percentage
                     }
                 },
                 {
@@ -152,7 +142,6 @@ const sampleData: CategoryInformation = {
                         avgExperience: 15,
                         avgSkillsExplored: 13,
                         happyPeople: 80, //Percentage
-                        sadPeople: 20 //Percentage
                     }
                 },
                 {
@@ -163,7 +152,6 @@ const sampleData: CategoryInformation = {
                         avgExperience: 15,
                         avgSkillsExplored: 13,
                         happyPeople: 80, //Percentage
-                        sadPeople: 20 //Percentage
                     }
                 }
             ],
@@ -172,7 +160,6 @@ const sampleData: CategoryInformation = {
                 avgExperience: 15,
                 avgSkillsExplored: 13,
                 happyPeople: 80, //Percentage
-                sadPeople: 20 //Percentage
             }
         }
     ],
@@ -181,6 +168,5 @@ const sampleData: CategoryInformation = {
         avgExperience: 15,
         avgSkillsExplored: 13,
         happyPeople: 80, //Percentage
-        sadPeople: 20 //Percentage
     }
 }
