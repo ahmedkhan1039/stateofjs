@@ -1,0 +1,10 @@
+.geography {
+  fill: #fff;
+  stroke: #eee;
+  stroke-width: 1.35;
+  outline: none;
+}
+.worldmap-composablemap {
+  width: 70%;
+  align-self: center;
+}
