@@ -21,5 +21,6 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
 sojs18.json
+filteredSojs18.json
 
 /src/data
