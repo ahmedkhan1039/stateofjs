@@ -1,26 +1,38 @@
 java_script_flavors_reason	
 java_script_flavors_clojure_script	
-java_script_flavors_elm	java_script_flavors_flow	
-java_script_flavors_type_script	java_script_flavors_es_6	
+java_script_flavors_elm
+java_script_flavors_flow	
+java_script_flavors_type_script
+java_script_flavors_es_6	
+
 java_script_flavors_on_a_scale_of_one_to_five_how_…re_you_with_available_java_script_flavors_options	
+
 front_end_react	
 front_end_angular	
 front_end_ember	
 front_end_polymer	
 front_end_vue_js	
 front_end_preact	
+
 front_end_on_a_scale_of_one_to_five_how_happy_are_you_with_available_front_end_options	
+
 data_layer_redux	
 data_layer_graph_ql	
 data_layer_relay	
 data_layer_apollo	
-data_layer_mobx	data_layer_on_a_scale_of_one_to_five_how_happy_are_you_with_available_data_layer_options	
-back_end_meteor	back_end_express	
+data_layer_mobx
+
+data_layer_on_a_scale_of_one_to_five_how_happy_are_you_with_available_data_layer_options	
+
+back_end_meteor
+back_end_express	
 back_end_next_js	
 back_end_koa	
 back_end_sails	
 back_end_feathers	
+
 back_end_on_a_scale_of_one_to_five_how_happy_are_you_with_available_back_end_options	
+
 testing_storybook	
 testing_mocha	
 testing_jasmine	
@@ -28,13 +40,16 @@ testing_jest
 testing_enzyme	
 testing_ava	
 testing_karma	
+
 testing_on_a_scale_of_one_to_five_how_happy_are_you_with_available_testing_options	
+
 mobile_desktop_electron	
 mobile_desktop_react_native	
 mobile_desktop_phone_gap_cordova	
 mobile_desktop_native_script	
 mobile_desktop_ionic	
 mobile_desktop_native_apps	
+
 mobile_desktop_on_a_scale_of_one_to_five_how_happy_are_you_with_available_mobile_desktop_options
 
 opinion_questions_java_script_is_moving_in_the_right_direction	
