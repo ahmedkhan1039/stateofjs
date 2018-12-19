@@ -1,6 +1,7 @@
 // libs
 import * as React from 'react'
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
+import * as fp from 'lodash/fp'
 
 // src
 import './WorldMap.css'
@@ -28,9 +29,10 @@ const WorldMap = () => (
   >
     <Geographies geography="/world-50m.json">
       {(geographies: Geography[], projection: Projection) =>
-        geographies.map((geography: Geography) => {
-          return (
-            geography.id !== 'ATA' && (
+        fp.flow(
+          fp.filter(({ id }: Geography) => id !== 'ATA'),
+          fp.map((geography: Geography) => {
+            return (
               <Geography
                 key={geography.id}
                 className="geography"
@@ -38,8 +40,8 @@ const WorldMap = () => (
                 projection={projection}
               />
             )
-          )
-        })
+          }),
+        )(geographies)
       }
     </Geographies>
   </ComposableMap>
