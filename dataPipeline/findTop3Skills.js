@@ -1,4 +1,4 @@
-const filteredData = require("./filteredSojs18.json");
+const filteredData = require("../data/filteredSojs18.json");
 
 const arrayOfSkills = [
   "java_script_flavors_reason",
@@ -50,6 +50,28 @@ const useMap = {
 };
 
 /**
+ * Sorts a key value pair of the form `targetObj` and returns as a 2D array with first index skill (or key) and second index weight (or value)
+ *
+ * @param {{ [key: string]: number }} targetObj
+ * @returns {Array<Array<skill}
+ */
+const sortObjectBasedOnValues = targetObj => {
+  const tempArr = [];
+  for (const key in targetObj) {
+    tempArr.push([key, targetObj[key]]);
+  }
+  tempArr.sort(function(a, b) {
+    return b[1] - a[1];
+  });
+  return tempArr;
+};
+
+const getTop3FromSortedArray = sortedArray =>
+  sortedArray
+    .slice(0, 3)
+    .map(arrEntry => ({ skill: arrEntry[0], weight: arrEntry[1] }));
+
+/**
  * This function will return list of `n` top skills from the given data
  *
  * @param {*} data
@@ -78,27 +100,13 @@ const findTopNSkills = (data, skills, useMap, n) => {
       }
     });
   });
-  const interestedArr = [];
-  for (const key in interestedMap) {
-    interestedArr.push([key, interestedMap[key]]);
-  }
-  interestedArr.sort(function(a, b) {
-    return b[1] - a[1];
-  });
-  const worksArr = [];
-  for (const key in interestedMap) {
-    worksArr.push([key, worksMap[key]]);
-  }
-  worksArr.sort(function(a, b) {
-    return b[1] - a[1];
-  });
+
+  const sortedInterestedArr = sortObjectBasedOnValues(interestedMap);
+  const sortedWorksArr = sortObjectBasedOnValues(worksMap);
+
   return {
-    top3Interests: interestedArr
-      .slice(0, 3)
-      .map(arrEntry => ({ skill: arrEntry[0], weight: arrEntry[1] })),
-    top3Skills: worksArr
-      .slice(0, 3)
-      .map(arrEntry => ({ skill: arrEntry[0], weight: arrEntry[1] }))
+    top3Interests: getTop3FromSortedArray(sortedInterestedArr),
+    top3Skills: getTop3FromSortedArray(sortedWorksArr)
   };
 };
 
