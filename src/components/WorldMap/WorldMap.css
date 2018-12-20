@@ -1,9 +1,21 @@
-.geography {
-  fill: #fff;
+.worldmap-geography {
+  fill: #777;
   stroke: #eee;
   stroke-width: 1.35;
   outline: none;
+  cursor: default;
 }
+
+.worldmap-geography-enabled {
+  fill: #fff;
+  cursor: pointer;
+}
+
+.worldmap-geography-enabled:hover {
+  fill: rgb(176, 214, 236);
+  stroke: rgb(176, 214, 236);
+}
+
 .worldmap-composablemap {
   width: 70%;
   align-self: center;

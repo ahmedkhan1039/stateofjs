@@ -1,5 +1,11 @@
 import * as React from 'react'
 
+// src
+import GeographyFilter from './components/GeographyFilter'
+import { Country } from './types'
+
+import countries from './countries.json'
+
 const Energy = {
   links: [
     { source: 0, target: 3, value: 50 },
@@ -145,14 +151,28 @@ const Energy = {
   ],
 }
 
+type State = {
+  activeCountry: Country
+}
 
-export default class App extends React.Component<{}, {}> {
+export default class App extends React.Component<{}, State> {
+  public state = { activeCountry: { name: '', code: '' } }
+
+  public handleCountryClick = (country: Country) => {
+    this.setState(() => ({ activeCountry: country }))
+  }
 
   public render() {
+    const { activeCountry } = this.state
 
     return (
       <div className="centered-and-flexed">
         {Energy.nodes[1].name}
+        <GeographyFilter
+          enabledCountries={countries}
+          onCountryClick={this.handleCountryClick}
+        />
+        {activeCountry.name}
       </div>
     )
   }

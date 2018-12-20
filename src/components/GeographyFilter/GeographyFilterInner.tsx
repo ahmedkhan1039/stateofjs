@@ -1,23 +1,31 @@
-import * as React from 'react'
-
-// mui
+// libs
 import Dialog from '@material-ui/core/Dialog'
 import Icon from '@material-ui/core/Icon'
 import IconButton from '@material-ui/core/IconButton'
 import Toolbar from '@material-ui/core/Toolbar'
+import * as React from 'react'
 
 // src
+import { Country } from '../../types'
 import WorldMap from '../WorldMap'
 import './GeographyFilterInner.css'
 
 type Props = {
   isOpen: boolean
+  enabledCountries: Country[]
+  onCountryClick: (country: Country) => void
   onFilterClick: () => void
   onDialogClose: () => void
 }
 
 const GeographyFilterInner = (props: Props) => {
-  const { isOpen = false, onFilterClick, onDialogClose } = props
+  const {
+    isOpen,
+    enabledCountries,
+    onCountryClick,
+    onFilterClick,
+    onDialogClose,
+  } = props
 
   return (
     <React.Fragment>
@@ -30,7 +38,11 @@ const GeographyFilterInner = (props: Props) => {
             <Icon>{'close'}</Icon>
           </IconButton>
         </Toolbar>
-        <WorldMap />
+        <WorldMap
+          enabledCountries={enabledCountries}
+          onCountryClick={onCountryClick}
+          onDialogClose={onDialogClose}
+        />
       </Dialog>
     </React.Fragment>
   )
