@@ -7,10 +7,13 @@ import Toolbar from '@material-ui/core/Toolbar'
 
 // src
 import './GeographyFilterInner.css'
+import { Country } from '../../types'
 import WorldMap from '../WorldMap'
 
 type Props = {
   isOpen: boolean
+  enabledCountries: Country[]
+  onCountryClick: (country: Country) => void
   onFilterClick: () => void
   onDialogClose: () => void
 }
@@ -29,7 +32,10 @@ const GeographyFilterInner = (props: Props) => {
             <Icon>{'close'}</Icon>
           </IconButton>
         </Toolbar>
-        <WorldMap />
+        <WorldMap
+          enabledCountries={enabledCountries}
+          onCountryClick={onCountryClick}
+        />
       </Dialog>
     </React.Fragment>
   )

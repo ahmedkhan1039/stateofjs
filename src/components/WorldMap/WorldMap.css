@@ -1,9 +1,15 @@
-.geography {
+.worldmap-geography {
   fill: #fff;
   stroke: #eee;
   stroke-width: 1.35;
   outline: none;
 }
+
+.worldmap-geography-disabled {
+  fill: #aaa;
+  cursor: default;
+}
+
 .worldmap-composablemap {
   width: 70%;
   align-self: center;

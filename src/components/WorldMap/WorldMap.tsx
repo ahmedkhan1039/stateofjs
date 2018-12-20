@@ -5,37 +5,56 @@ import * as fp from 'lodash/fp'
 
 // src
 import './WorldMap.css'
+import { Country, GeographyData, Projection } from '../../types'
 
-type Longitude = number
-type Latitude = number
-type Coordinates = [Longitude, Latitude]
-
-type Geography = {
-  id: string
-  type: string
-  properties: { name: string }
-  geometry: {
-    type: string
-    coordinates: Array<Coordinates[]>
-  }
+type Props = {
+  enabledCountries: Country[]
+  onCountryClick: (country: Country) => void
 }
 
-type Projection = (point: Coordinates) => Coordinates
+function enableCountries(enabledCountries: Country[]) {
+  return fp.map((geography: GeographyData) => {
+    const {
+      id,
+      properties: { name },
+    } = geography
+    const index = fp.findIndex(
+      (country: Country) =>
+        country.name === name ||
+        country.code === id ||
+        fp.includes(name)(country.possibleCombinations),
+    )(enabledCountries)
+    const isEnabled = index > -1
 
-const WorldMap = () => (
+    return { ...geography, isEnabled }
+  })
+}
+
+const WorldMap = ({ enabledCountries, onCountryClick }: Props) => (
   <ComposableMap
     className="worldmap-composablemap"
     style={{ height: window.innerHeight }}
   >
     <Geographies geography="/world-50m.json">
-      {(geographies: Geography[], projection: Projection) =>
+      {(geographies: GeographyData[], projection: Projection) =>
         fp.flow(
-          fp.filter(({ id }: Geography) => id !== 'ATA'),
-          fp.map((geography: Geography) => {
+          fp.filter(({ id }: GeographyData) => id !== 'ATA'),
+          enableCountries(enabledCountries),
+          fp.map((geography: GeographyData) => {
+            const {
+              id,
+              properties: { name },
+              isEnabled,
+            } = geography
+
             return (
               <Geography
-                key={geography.id}
-                className="geography"
+                key={id}
+                className={[
+                  'worldmap-geography',
+                  !isEnabled && 'worldmap-geography-disabled',
+                ].join(' ')}
+                onClick={() => isEnabled && onCountryClick({ name, code: id })}
                 geography={geography}
                 projection={projection}
               />
