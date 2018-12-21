@@ -8,8 +8,9 @@
       "src/**/*.json"
     ]
   },
-  "rules":{
+  "rules": {
     "interface-over-type-literal": [false],
-    "jsx-boolean-value": ["never"]
+    "jsx-boolean-value": ["never"],
+    "no-console": false
   }
 }
