@@ -1,7 +1,12 @@
+// libs
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import Typography from '@material-ui/core/Typography'
 import * as React from 'react'
 
 // src
+import './App.css'
 import GeographyFilter from './components/GeographyFilter'
+import muiTheme from './config/muiTheme'
 import { Country } from './types'
 
 import countries from './countries.json'
@@ -166,14 +171,16 @@ export default class App extends React.Component<{}, State> {
     const { activeCountry } = this.state
 
     return (
-      <div className="centered-and-flexed">
-        {Energy.nodes[1].name}
-        <GeographyFilter
-          enabledCountries={countries}
-          onCountryClick={this.handleCountryClick}
-        />
-        {activeCountry.name}
-      </div>
+      <MuiThemeProvider theme={muiTheme}>
+        <div style={{ background: '#424242' }}>
+          <Typography>{Energy.nodes[1].name}</Typography>
+          <GeographyFilter
+            enabledCountries={countries}
+            onCountryClick={this.handleCountryClick}
+          />
+          <Typography>{activeCountry.name}</Typography>
+        </div>
+      </MuiThemeProvider>
     )
   }
 }

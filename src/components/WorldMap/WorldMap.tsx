@@ -63,7 +63,7 @@ class WorldMap extends React.Component<Props> {
     const { enabledCountries } = this.props
 
     return (
-      <div>
+      <React.Fragment>
         <ReactTooltip />
         <ComposableMap
           className="worldmap-composablemap"
@@ -80,6 +80,8 @@ class WorldMap extends React.Component<Props> {
                     properties: { name },
                     isEnabled,
                   } = geography
+                  const color =
+                    colorScale[findIndex({ name })(enabledCountries) % 6]
 
                   return (
                     <Geography
@@ -91,11 +93,10 @@ class WorldMap extends React.Component<Props> {
                       ].join(' ')}
                       style={{
                         default: {
-                          fill: isEnabled
-                            ? colorScale[
-                                findIndex({ name })(enabledCountries) % 6
-                              ]
-                            : '#fff',
+                          fill: isEnabled ? color : '#fff',
+                        },
+                        hover: {
+                          fill: isEnabled ? chroma(color).darken(0.5) : '#fff',
                         },
                       }}
                       geography={geography}
@@ -108,7 +109,7 @@ class WorldMap extends React.Component<Props> {
             }
           </Geographies>
         </ComposableMap>
-      </div>
+      </React.Fragment>
     )
   }
 }
